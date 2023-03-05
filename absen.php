@@ -58,11 +58,13 @@ if (isset($_POST['absen'])) {
 <form action="" method="post">
     <!-- <div id="my_camera" style="width:320px; height:240px;"></div>
     <u id="my_result"></div> -->
-    <div class="container d-flex justify-content-center align-items-center">
-        <input type="hidden" name="nisn" value="<?= $_GET['nisn']; ?>">
-        <input type="hidden" name="loc" id="loc">
-        <!-- <input type="file" name="gambar" id="gambar"> -->
-        <button type="submit" onclick="take_snapshot()" class="btn btn-primary" name="absen" value="absen">Absen</a>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100%;">
+        <div>
+            <input type="hidden" name="nisn" value="<?= $_GET['nisn']; ?>">
+            <input type="hidden" name="loc" id="loc">
+            <!-- <input type="file" name="gambar" id="gambar"> -->
+            <button type="submit" onclick="take_snapshot()" class="btn btn-primary btn-lg btn-block" name="absen" value="absen">Absen</a>
+        </div>
     </div>
 </form>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>

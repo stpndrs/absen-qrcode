@@ -14,8 +14,8 @@
 
 
 -- Dumping database structure for absensi_siswa
-CREATE DATABASE IF NOT EXISTS `absensi_siswa` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `absensi_siswa`;
+-- CREATE DATABASE IF NOT EXISTS `absensi_siswa` /*!40100 DEFAULT CHARACTER SET latin1 */;
+-- USE `absensi_siswa`;
 
 -- Dumping structure for table absensi_siswa.tb_absen
 CREATE TABLE IF NOT EXISTS `tb_absen` (
