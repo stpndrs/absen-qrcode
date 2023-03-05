@@ -6,16 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Absen Siswa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1 class="text-center">Gagal menyimpan data absen!</h1>
+    <div class="container d-flex justify-content-center align-item-center">
+        <div>
+            <h1 class="text-center">Gagal menyimpan data absen!</h1>
+            Akan tertutup pada: <div id="waktu"></div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
     <script>
         setTimeout(function() {
-            window.location.href = "index.php"; //will redirect to your blog page (an ex: blog.html)
-        }, 5000); //will call the function after 2 secs.
+            window.close('', '_parent', '');
+        }, 5000); //will call the function after 5 secs.000); //will call the function after 2 secs.
+        var waktu = 6;
+        setInterval(function() {
+            waktu--;
+            if (waktu < 0) {
+                // window.location = 'http://dumetschool.com';
+                window.close('', '_parent', '')
+            } else {
+                document.getElementById("waktu").innerHTML = waktu;
+            }
+        }, 1000);
     </script>
 
 </body>
