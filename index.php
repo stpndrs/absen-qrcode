@@ -1,6 +1,32 @@
 <?php
 include "phpqrcode/qrlib.php";
 include 'koneksi.php';
+
+session_start();
+if(!isset($_SESSION["login"])) {
+    header("Location: login.php");
+}
+if(isset($_POST["login"])) {
+
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $result = mysqli_query($conn, "SELECT * FROM user WHERE username='$username'");
+
+    if(mysqli_num_rows($result) === 1){
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['username'] = $username; // set session
+        header("Location: login.php");
+    } else {
+        $error = "Username atau password salah";
+    }
+}
+
+if(isset($_SESSION['username'])) {
+    header("Location: index.php"); // jika sudah login, arahkan ke halaman index
+    exit;
+	var_dump($result);die;
+}
 ?>
 
 <!doctype html>
@@ -9,7 +35,7 @@ include 'koneksi.php';
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Coba Absen 2</title>
+	<title>Absensi Siswa</title>
 	<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
