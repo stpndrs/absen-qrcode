@@ -1,31 +1,32 @@
 <?php
 include "phpqrcode/qrlib.php";
 include 'koneksi.php';
-
 session_start();
-if(!isset($_SESSION["login"])) {
-    header("Location: login.php");
-}
-if(isset($_POST["login"])) {
+// var_dump($_SESSION);
+// die;
+// if(!isset($_SESSION["login"])) {
+//     header("Location: login.php");
+// }
+// if(isset($_POST["login"])) {
 
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+//     $username = $_POST["username"];
+//     $password = $_POST["password"];
 
-    $result = mysqli_query($conn, "SELECT * FROM user WHERE username='$username'");
+//     $result = mysqli_query($conn, "SELECT * FROM user WHERE username='$username'");
 
-    if(mysqli_num_rows($result) === 1){
-        $row = mysqli_fetch_assoc($result);
-        $_SESSION['username'] = $username; // set session
-        header("Location: login.php");
-    } else {
-        $error = "Username atau password salah";
-    }
-}
+//     if(mysqli_num_rows($result) === 1){
+//         $row = mysqli_fetch_assoc($result);
+//         $_SESSION['username'] = $username; // set session
+//         header("Location: login.php");
+//     } else {
+//         $error = "Username atau password salah";
+//     }
+// }
 
-if(isset($_SESSION['username'])) {
-    header("Location: index.php"); // jika sudah login, arahkan ke halaman index
-    exit;
-	var_dump($result);die;
+if(!isset($_SESSION['login'])) {
+    header("Location: login.php"); // jika sudah login, arahkan ke halaman index
+    // exit;
+	// var_dump($result);die;
 }
 ?>
 

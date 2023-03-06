@@ -1,24 +1,33 @@
-<?php 
-
-
-
+<?php
 require "koneksi.php";
+session_start();
+if (isset($_POST["login"])) {
 
+    // $username = $_POST["username"];
+    // $password = $_POST["password"];
 
+    // $result = mysqli_query($conn, "SELECT * FROM user WHERE username='$username'");
 
-if(isset($_POST["login"])) {
+    // if(mysqli_num_rows($result) === 1){
+    //     $row = mysqli_fetch_assoc($result);
+    //     header("Location: index.php");
+    // }
 
     $username = $_POST["username"];
     $password = $_POST["password"];
 
     $result = mysqli_query($conn, "SELECT * FROM user WHERE username='$username'");
 
-    if(mysqli_num_rows($result) === 1){
+    if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
-        header("Location: config.php");
+        $_SESSION['login'] = $username; // set session
+        header("Location: index.php");
+    } else {
+        $error = "Username atau password salah";
     }
-
-
+}
+if (isset($_SESSION['username'])) {
+    header('Location: index.php');
 }
 
 ?>
@@ -39,46 +48,46 @@ if(isset($_POST["login"])) {
 </head>
 
 <body class="hold-transition register-page">
-    
-<body class="hold-transition login-page">
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="#"><b>Absensi Siswa</b><br>SMK Negeri 7 Samarinda</a>
-        </div>
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Silahkan masuk menggunakan akun anda</p>
 
-                
-                <form action="index.php" method="post">
-                    <div class="input-group mb-3">
-                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-user"></span>
+    <body class="hold-transition login-page">
+        <div class="login-box">
+            <div class="login-logo">
+                <a href="#"><b>Absensi Siswa</b><br>SMK Negeri 7 Samarinda</a>
+            </div>
+            <div class="card">
+                <div class="card-body login-card-body">
+                    <p class="login-box-msg">Silahkan masuk menggunakan akun anda</p>
+
+
+                    <form action="" method="post">
+                        <div class="input-group mb-3">
+                            <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-user"></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
+                        <div class="input-group mb-3">
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary" name="login">Masuk</button>
+                        <div class="row">
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary" name="login">Masuk</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <script src="https://adminlte.io/themes/v3/plugins/jquery/jquery.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="https://adminlte.io/themes/v3/dist/js/adminlte.min.js?v=3.2.0"></script>
-</body>
+        <script src="https://adminlte.io/themes/v3/plugins/jquery/jquery.min.js"></script>
+        <script src="https://adminlte.io/themes/v3/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="https://adminlte.io/themes/v3/dist/js/adminlte.min.js?v=3.2.0"></script>
+    </body>
 
 </html>
