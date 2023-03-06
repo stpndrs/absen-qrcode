@@ -86,7 +86,7 @@ if(!isset($_SESSION['login'])) {
 			$('#qrcode').qrcode({
 				width: $('.qr-size').val(),
 				height: $('.qr-size').val(),
-				text: '<?= $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI']; ?>/absen.php?nisn=' + $('#nisn').val()
+				text: '<?= $_SERVER['SERVER_NAME'] ?>/absen.php?nisn=' + $('#nisn').val()
 			});
 			$('#nisn').reset()
 		})
